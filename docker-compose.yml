@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  imgproxy:
+    image: darthsim/imgproxy:latest
+    restart: always
+    environment:
+      IMGPROXY_USE_ETAG: "true"
+      IMGPROXY_TTL: "31536000"
+      IMGPROXY_ENFORCE_AVIF: "true"
+      IMGPROXY_ENFORCE_WEBP: "true"
+      IMGPROXY_KEY: "c9ec525b4b174383c53cfa6abf419a1806d6ff76b9b4ceeb48028d53596c63cca8fefdca0152c91d6adfc5c34271e2c82d4cd854ea463b06954094dc14572141"
+      IMGPROXY_SALT: "018ee12177c553ba802032ce7d227d2ddec53f73cf85de1ca4d734fcdee52648c0ae3ef07cc55042146f30a501719ca970d8d4de2be72be9e71a496c0806254d"
+    ports:
+      - "8080:8080"
+    networks:
+      - common
+
+networks:
+  common:
